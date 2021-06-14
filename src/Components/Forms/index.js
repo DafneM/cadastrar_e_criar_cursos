@@ -8,6 +8,14 @@ const Forms = () => {
     const [duration, setDuration] = useState('');
     const [description, setDescription] = useState('');
 
+    const storeData = () => {
+        if(typeof(Storage) !== 'undefined'){
+            (localStorage.i) ? localStorage.i = Number(localStorage.i)+1 : localStorage.i=1;
+            let course = courseName + ',' + initialDate + ',' + endDate + ',' + ',' + duration + ',' + description
+            localStorage?.setItem('@cadastrar_e_criar_cursos/course' + localStorage.i, course); 
+        }
+    }
+
     return(
         <div>
             <div>
@@ -45,13 +53,7 @@ const Forms = () => {
             onChange={(e) => setDescription(e?.target?.value)}
             ></textarea>
             </div>
-             <button onClick={() => {
-                localStorage?.setItem('@cadastrar_e_criar_cursos/courseName', courseName); 
-                localStorage?.setItem('@cadastrar_e_criar_cursos/initialDate', initialDate);
-                localStorage?.setItem('@cadastrar_e_criar_cursos/endDate', endDate);
-                localStorage?.setItem('@cadastrar_e_criar_cursos/duration', duration);
-                localStorage?.setItem('@cadastrar_e_criar_cursos/description', description);
-            }}
+             <button onClick={() => { storeData(); }}
             type="submit">Cadastrar</button>
         </div>
     );
