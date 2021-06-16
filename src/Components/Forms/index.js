@@ -11,7 +11,7 @@ const Forms = () => {
     const storeData = () => {
         if(typeof(Storage) !== 'undefined'){
             (localStorage.i) ? localStorage.i = Number(localStorage.i)+1 : localStorage.i=1;
-            let course = courseName + ',' + initialDate + ',' + endDate + ',' + ',' + duration + ',' + description
+            let course = courseName + ',' + initialDate + ',' + endDate + ',' + duration + ',' + description
             localStorage?.setItem('@cadastrar_e_criar_cursos/course' + localStorage.i, course); 
         }
     }

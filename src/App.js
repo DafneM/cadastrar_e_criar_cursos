@@ -1,10 +1,15 @@
 import './App.css';
-import CreateListCourses from './Pages/CreateListCourses';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './Routes';
+import Navbar from './Components/Navbar';
 
 function App() {
   return (
     <div>
-      <CreateListCourses/>
+    <BrowserRouter>
+      <Navbar />
+      <Routes />
+    </BrowserRouter>
     </div>
   );
 }

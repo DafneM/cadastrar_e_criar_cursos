@@ -2,7 +2,7 @@ import React from 'react';
 import Forms from '../../Components/Forms';
 import Logo from '../../Logo/allylogo.svg';
 
-const Container = () => {
+const CreateCourses = () => {
     
     return(
         <div>
@@ -12,4 +12,4 @@ const Container = () => {
     );
 }
 
-export default Container;
+export default CreateCourses;
