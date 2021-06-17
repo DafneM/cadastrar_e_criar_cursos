@@ -1,13 +1,13 @@
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
-import Navbar from './Components/Navbar';
+import NavBar from './Components/Navbar';
 
 function App() {
   return (
     <div>
     <BrowserRouter>
-      <Navbar />
+      <NavBar />
       <Routes />
     </BrowserRouter>
     </div>

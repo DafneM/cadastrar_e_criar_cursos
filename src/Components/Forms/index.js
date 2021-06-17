@@ -7,12 +7,16 @@ const Forms = () => {
     const [endDate, setEndDate] = useState('');
     const [duration, setDuration] = useState('');
     const [description, setDescription] = useState('');
+    let courseArray = [];
+    let count = 1;
 
     const storeData = () => {
         if(typeof(Storage) !== 'undefined'){
             (localStorage.i) ? localStorage.i = Number(localStorage.i)+1 : localStorage.i=1;
-            let course = courseName + ',' + initialDate + ',' + endDate + ',' + duration + ',' + description
-            localStorage?.setItem('@cadastrar_e_criar_cursos/course' + localStorage.i, course); 
+            // let course = courseName + ',' + initialDate + ',' + endDate + ',' + duration + ',' + description
+            var course = {courseName: `${courseName}` , initialDate: `${initialDate}` , endDate: `${endDate}`, duration: `${duration}`, description: `${description}`};
+            courseArray[++count] = course;
+            localStorage?.setItem('@cadastrar_e_criar_cursos/course' + localStorage.i, JSON.stringify(course)); 
         }
     }
 
