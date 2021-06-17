@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { findAllInRenderedTree } from 'react-dom/test-utils';
+import React, { useState, useEffect } from 'react';
 import CourseData from '../../Components/CourseData';
 
 const ListCourses = () => {
-    const [filterCourses, setFilterCourses] = useState([]);
     const [word, setWord] = useState();
     var arrayCourses = [];
+    const [filterCourses, setFilterCourses] = useState(arrayCourses)
 
     const getCourses = async () => {
       let count = 1;
@@ -15,36 +14,32 @@ const ListCourses = () => {
         }
     };
 
-    // useEffect(() => {
-    //     setFilterCourses(
-    //       arrayCourses.filter((course) => course?.courseName?.toLowerCase().includes(word?.toLowerCase())),
-    //     );
-    //   }, [word]);
-    
-    //   useEffect(() => {
-    //     setFilterCourses(arrayCourses);
-    //   }, [arrayCourses]);
-    
+    useEffect(() => {
+        setFilterCourses(
+          arrayCourses.filter((course) => course?.courseName?.toLowerCase().includes(word?.toLowerCase()))
+        );
+      }, [word]);
+
     const listCourses = () => {
       getCourses();
       if (arrayCourses?.length === 0) {
         return <h1>Sem resultados</h1>;
       }
-        // if (filterCourses?.length === 0) {
-        //   return <h1>Sem resultados</h1>;
-        // }
-      return arrayCourses?.map((course) => (<CourseData 
-          course={course}
+      if (filterCourses?.length === 0) {
+        setFilterCourses(arrayCourses);
+      }
+      if(filterCourses?.length === 0 && arrayCourses?.length === 0){
+        return <h1>Sem resultados</h1>;
+      }
+      return filterCourses?.map((elem) => (<CourseData 
+          course={elem}
+          name={elem.courseName}
       />));
       };
     
     return(
         <div>
-            <input
-              type="text"
-              value={word}
-              setWord={(value) => setWord(value)}
-            />
+            <input type="text" placeholder="Pesquisar..." onChange={(word) => setWord(word.target.value)}></input> 
             <div>
               {listCourses()}
             </div>

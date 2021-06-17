@@ -3,10 +3,11 @@ import React from 'react';
 
 const CourseData = (
     course,
+    name
 ) => {
     return(
         <div>
-            <h1 style={{backgroundColor: 'blue', width:'50%', height: '20%'}}>oi {course.courseName}</h1>
+            <h1 style={{backgroundColor: 'blue', width:'50%', height: '20%'}}>{course.name}</h1>
         </div>
     );
 }
