@@ -1,4 +1,4 @@
-# Create and List Courses Project
+# Project to create and list courses
 
 The project is a SPA (Single Page Application) in [React](https://reactjs.org/) to create and list courses. 
 
